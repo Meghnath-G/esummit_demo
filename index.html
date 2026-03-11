@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bengal E-Summit 2026 | Autobots Roll Out</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- CUSTOM CURSOR -->
+<div id="cur"></div>
+
+<!-- LOADING SCREEN -->
+<div id="loader" class="loader-container">
+  <div class="loader-content">
+    <div class="loader-logo-mark"></div>
+    <div class="loader-text">INITIALIZING BENGAL E-SUMMIT 2026</div>
+    <div class="loader-bar-wrap">
+      <div id="loaderBar" class="loader-bar"></div>
+    </div>
+  </div>
+</div>
+
+<!-- GLOBAL OVERLAYS (Scanlines, CRT distort) -->
+<div class="scanlines-overlay"></div>
+
+<!-- HUD CORNERS AND LABELS -->
+<div class="hud-overlay" id="hud">
+  <div class="hud-corner hc-tl"></div>
+  <div class="hud-corner hc-tr"></div>
+  <div class="hud-corner hc-bl"></div>
+  <div class="hud-corner hc-br"></div>
+  <div class="hud-label hud-tl-label">BES // 2026</div>
+  <div class="hud-label hud-tr-label">SYSTEM ONLINE</div>
+  <div class="hud-label hud-bl-label" id="hudMode">AUTOBOT MODE</div>
+  <div class="hud-label hud-br-label">IEM · UEM · IEDC</div>
+
+  <div class="hud-progress-wrap">
+    <div class="hud-progress-label">TRANSFORMATION SEQUENCE</div>
+    <div class="hud-bar-bg"><div id="sequenceBarBg" class="hud-bar-fill"></div></div>
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-logo">
+    <div class="nav-logo-mark"></div>
+    BENGAL E-SUMMIT
+  </div>
+  <ul class="nav-links">
+    <li><a href="#">Events</a></li>
+    <li><a href="#">Speakers</a></li>
+    <li><a href="#">Partners</a></li>
+    <li><a href="#">Team</a></li>
+    <li><a href="#">Flashback</a></li>
+  </ul>
+  <button class="nav-cta">Register Now</button>
+</nav>
+
+<!-- MAIN SCROLLYTELLING CONTAINER -->
+<div class="scrolly-container">
+  
+  <!-- STICKY VIEWPORT (Stays stuck for 500vh) -->
+  <div class="sticky-viewport">
+    
+    <!-- ANIMATED BACKGROUND LAYER -->
+    <div class="bg-layer">
+      <div class="bg-grid"></div>
+      <div class="bg-radial"></div>
+      <div class="scanline"></div>
+      <div class="hex-field" id="hexField"></div>
+      
+      <!-- Circuit SVG -->
+      <svg class="circuit-svg circuit-left" viewBox="0 0 400 900" preserveAspectRatio="xMidYMid slice">
+        <g stroke="rgba(0,200,255,0.2)" stroke-width="1" fill="none">
+          <polyline points="0,200 120,200 140,220 300,220 320,200 400,200"/>
+          <polyline points="0,600 80,600 100,580 240,580 260,600 400,600"/>
+          <polyline points="200,0 200,80 220,100 220,200"/>
+          <circle cx="320" cy="200" r="4" fill="#00c8ff"/>
+          <circle cx="260" cy="600" r="4" fill="#00c8ff"/>
+          <circle cx="220" cy="100" r="4" fill="#00c8ff"/>
+        </g>
+      </svg>
+      <svg class="circuit-svg circuit-right" viewBox="0 0 400 900" preserveAspectRatio="xMidYMid slice">
+        <g stroke="rgba(0,200,255,0.2)" stroke-width="1" fill="none">
+          <polyline points="400,350 280,350 260,330 60,330 40,350 0,350"/>
+          <polyline points="400,700 340,700 320,680 160,680 140,700 0,700"/>
+          <polyline points="60,900 60,820 40,800 40,700"/>
+          <circle cx="60" cy="330" r="4" fill="#00c8ff"/>
+          <circle cx="40" cy="800" r="4" fill="#00c8ff"/>
+        </g>
+      </svg>
+    </div>
+
+    <!-- CANVAS LAYER -->
+    <canvas id="frameCanvas"></canvas>
+
+    <!-- TEXT OVERLAYS LAYER -->
+    <div class="text-layer">
+      <!-- ACT 1 -->
+      <div id="act1" class="act-block act-centered act-top">
+        <h1 class="t-main"><span class="gr-text">BENGAL E-SUMMIT</span></h1>
+        <div class="t-sub-cyber">2 · 0 · 2 · 6</div>
+        <p class="t-body">Eastern India's largest entrepreneurship and innovation summit.<br/>Four days. Thousands of minds. One mission.</p>
+        <div class="t-label">SCROLL TO TRANSFORM</div>
+        <div class="scroll-chevron"></div>
+      </div>
+
+      <!-- ACT 2 -->
+      <div id="act2" class="act-block act-left hidden">
+        <div class="t-eyebrow">INNOVATION ARENA</div>
+        <h2 class="t-section">Where Ideas<br/>Detonate.</h2>
+        <p class="t-body">50+ events spanning entrepreneurship, technology, design, and culture. Every competition engineered to push your limits.</p>
+        <div class="stat-row">
+          <span class="st-num">50+ Events</span> <span class="st-dot">·</span> <span class="st-num">₹5L+ Prize Pool</span> <span class="st-dot">·</span> <span class="st-num">72 Hours</span>
+        </div>
+      </div>
+
+      <!-- ACT 3 -->
+      <div id="act3" class="act-block act-right hidden">
+        <div class="t-eyebrow">SPEAKER COUNCIL</div>
+        <h2 class="t-section">Learn From<br/>The Best.</h2>
+        <p class="t-body">Industry leaders, founders, and investors from across India's startup ecosystem take the stage. Real stories. Real insight. No filters.</p>
+        <hr class="minimal-hr"/>
+        <div class="t-past-label">PAST SPEAKERS INCLUDE</div>
+        <div class="speaker-slots">[ FOUNDER ] · [ CEO ] · [ INVESTOR ]</div>
+      </div>
+
+      <!-- ACT 4 -->
+      <div id="act4" class="act-block act-left hidden">
+        <div class="t-eyebrow">STARTUP ECOSYSTEM</div>
+        <h2 class="t-section">Build.<br/>Pitch.<br/>Launch.</h2>
+        <p class="t-body">From first-time founders to serial entrepreneurs — Bengal E-Summit is where startups find their spark. Mentors, investors, and the network to make it real.</p>
+        <div class="feature-rows">
+          <div class="f-row">Startup Expo — <span class="f-sub">Showcase your venture to 200+ investors.</span></div>
+          <div class="f-row">Pitch Perfect — <span class="f-sub">Win ₹2L in our flagship pitching competition.</span></div>
+          <div class="f-row">Investopia — <span class="f-sub">Real investment deals happen here.</span></div>
+        </div>
+      </div>
+
+      <!-- ACT 5 -->
+      <div id="act5" class="act-block act-centered hidden" style="background: rgba(4,6,14,0.6); padding: 40px; border-radius: 12px; backdrop-filter: blur(4px);">
+        <h1 class="t-main"><span class="gr-text">AUTOBOTS.<br/>ROLL OUT.</span></h1>
+        <p class="t-body t-spacing">Bengal E-Summit 2026. Are you ready to transform?</p>
+        <div class="btn-group">
+          <a href="#register" class="btn btn-primary">REGISTER NOW</a>
+          <a href="#events" class="btn btn-secondary">EXPLORE EVENTS →</a>
+        </div>
+        <div class="micro-copy">IEM · UEM · IEDC-ECE · Bengal E-Summit 2026</div>
+      </div>
+
+    </div>
+
+    <!-- TICKER (always fixed at bottom of viewport) -->
+    <div class="ticker">
+      <div class="ticker-inner">
+        <span>BENGAL E-SUMMIT 2026</span><span>·</span>
+        <span>TRANSFORM · INNOVATE · DOMINATE</span><span>·</span>
+        <span>IEM · UEM · IEDC-ECE</span><span>·</span>
+        <span>REGISTRATIONS OPEN</span><span>·</span>
+        <span>50+ EVENTS · 10,000+ PARTICIPANTS</span><span>·</span>
+        <span>BENGAL E-SUMMIT 2026</span><span>·</span>
+        <span>TRANSFORM · INNOVATE · DOMINATE</span><span>·</span>
+        <span>IEM · UEM · IEDC-ECE</span><span>·</span>
+        <span>REGISTRATIONS OPEN</span><span>·</span>
+        <span>50+ EVENTS · 10,000+ PARTICIPANTS</span><span>·</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- POST-SCROLL SECTIONS -->
+<!-- Section A - Events Grid -->
+<section class="post-section sec-events">
+  <div class="container">
+    <h2 class="t-section text-center">CHOOSE YOUR ARENA</h2>
+    <div class="events-grid">
+      <div class="event-card">
+        <h3 class="e-title">HACKATHON</h3>
+        <p class="e-desc">Code the future. Build scalable solutions to real-world problems in 48 hours.</p>
+        <div class="e-prize">PRIZE: ₹1,000,000</div>
+        <div class="e-links"><a href="#">LEARN MORE →</a><a href="#">REGISTER →</a></div>
+      </div>
+      <div class="event-card">
+        <h3 class="e-title">PITCH PERFECT</h3>
+        <p class="e-desc">The ultimate startup battlefield. Pitch directly to top angel investors.</p>
+        <div class="e-prize">PRIZE: ₹200,000</div>
+        <div class="e-links"><a href="#">LEARN MORE →</a><a href="#">REGISTER →</a></div>
+      </div>
+      <div class="event-card">
+        <h3 class="e-title">STARTUP EXPO</h3>
+        <p class="e-desc">Set up your booth. Gain massive visibility and early customer traction.</p>
+        <div class="e-prize">EXHIBIT &amp; SCALE</div>
+        <div class="e-links"><a href="#">LEARN MORE →</a><a href="#">REGISTER →</a></div>
+      </div>
+      <div class="event-card">
+        <h3 class="e-title">INVESTOPIA</h3>
+        <p class="e-desc">Virtual stock market trading. Test your financial acumen in real-time.</p>
+        <div class="e-prize">PRIZE: ₹50,000</div>
+        <div class="e-links"><a href="#">LEARN MORE →</a><a href="#">REGISTER →</a></div>
+      </div>
+      <div class="event-card">
+        <h3 class="e-title">CONTENT CREATORS CONCLAVE</h3>
+        <p class="e-desc">Where creativity meets monetization in the modern digital economy.</p>
+        <div class="e-prize">NETWORK &amp; GROW</div>
+        <div class="e-links"><a href="#">LEARN MORE →</a><a href="#">REGISTER →</a></div>
+      </div>
+      <div class="event-card">
+        <h3 class="e-title">MIND MASTERS</h3>
+        <p class="e-desc">The flagship business quiz. Prove your knowledge across industries.</p>
+        <div class="e-prize">PRIZE: ₹30,000</div>
+        <div class="e-links"><a href="#">LEARN MORE →</a><a href="#">REGISTER →</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section B - Stats -->
+<section class="post-section sec-stats">
+  <div class="container">
+    <div class="stats-row">
+      <div class="st-item"><div class="st-big">50+</div><div class="st-label">Events</div></div>
+      <div class="divider"></div>
+      <div class="st-item"><div class="st-big">10K+</div><div class="st-label">Participants</div></div>
+      <div class="divider"></div>
+      <div class="st-item"><div class="st-big">₹5L+</div><div class="st-label">Prize Pool</div></div>
+      <div class="divider"></div>
+      <div class="st-item"><div class="st-big">4</div><div class="st-label">Days</div></div>
+    </div>
+    <div class="partners-strip">
+      <span>IEM</span><span>UEM</span><span>IEDC-ECE</span>
+      <span class="placeholder-logo">[ SPONSOR LOGO ]</span>
+      <span class="placeholder-logo">[ SPONSOR LOGO ]</span>
+    </div>
+  </div>
+</section>
+
+<!-- Section C - Final CTA -->
+<section class="post-section sec-cta">
+  <div class="radial-glow-cta"></div>
+  <div class="container text-center">
+    <h1 class="t-main"><span class="gr-text">THE FUTURE IS YOURS<br/>TO BUILD.</span></h1>
+    <p class="t-body mt-4">Bengal E-Summit 2026. Register today and become part of Eastern India's most powerful startup movement.</p>
+    <div class="btn-group mt-6">
+      <a href="#register" class="btn btn-primary" style="font-size:18px; padding: 16px 40px;">REGISTER NOW</a>
+      <a href="#events" class="btn btn-secondary" style="font-size:18px; padding: 16px 40px;">EXPLORE ALL EVENTS</a>
+    </div>
+    <div class="micro-copy mt-6">July 2026 · IEM Kolkata · Open to all students</div>
+  </div>
+</section>
+
+<script src="script.js"></script>
+</body>
+</html>
